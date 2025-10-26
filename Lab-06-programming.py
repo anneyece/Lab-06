@@ -6,8 +6,13 @@ Created on Tue Oct 21 08:05:02 2025
 @author: anneyece isabel castro ramos and yolina bakhos
 """
 
+# Part 3 – Understanding and preparing the data
+
+#2.
+
 import pandas as pd
 import seaborn as sns
+import matplotlib.pyplot as plt
 
 World_Demographic_Indicators = pd.read_csv("wdi_wide.csv")
 
@@ -65,7 +70,86 @@ print(pd.crosstab(World_Demographic_Indicators["High Income Economy"],World_Demo
 
 life_expectancy_more_80_female = World_Demographic_Indicators[World_Demographic_Indicators["Life expectancy, female"] > 80]
 
+print(" ")
+print(" ")
+print("Countries where women can expect to live for more than 80 years:")
+print(" ")
 
 for i in life_expectancy_more_80_female["Country Name"]:
     print(i)
+
+# =============================================================================
+# 
+# =============================================================================
+
+# Part 4 - Visualizing statistical relationships
+
+#1. Is there any association between GNI per capita and life expectancy?” (one plot for each gender)
+
+#female
+sns.relplot(World_Demographic_Indicators, x="Life expectancy, female", y="GNI per capita")
+#male
+sns.relplot(World_Demographic_Indicators, x="Life expectancy, male", y="GNI per capita")
+
+plt.show()
+
+#2. By adding a third “feature” to your plot using colors to represent it in
+# order to answer the following question: “Does the association between GNI per
+# capita and life expectancy vary by region?” (one plot for each gender)
+
+#female
+sns.relplot(World_Demographic_Indicators, x="Life expectancy, female", y="GNI per capita", hue="Region")
+#male
+sns.relplot(World_Demographic_Indicators, x="Life expectancy, male", y="GNI per capita", hue="Region")
+
+plt.show()
+
+#3. Generate a the plot from item 2, now using lines along with standard deviation.
+
+#female
+sns.lineplot(World_Demographic_Indicators, x="Life expectancy, female", y="GNI per capita", errorbar="sd")
+plt.show()
+#male
+sns.lineplot(World_Demographic_Indicators, x="Life expectancy, male", y="GNI per capita", errorbar="sd")
+plt.show()
+
+#4.
+
+#5.
+
+#6.
+#a) Is there any association between Internet use and emissions per capita?
+
+#b) Which are the countries with high emissions? (> 0.03)
+
+#c) Is there much variation by region (with respect to high emissions vs Internet use)?
+
+#d) Do all high income economies have high emissions?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
